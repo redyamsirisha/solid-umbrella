@@ -22,12 +22,14 @@ jobs:
           git clone --mirror https://${{ secrets.BITBUCKET_USER }}:${{ secrets.BITBUCKETTOKEN }}@bitbucket.org/demorepo123/helloworld1.git
           git remote -v
           cd helloworld1.git
-      - name: Push to GitHub
+      
+      - name: Push to GitHub (Mirror without Main)
         run: |
-          cd helloworld1.git
-          git remote remove origin || true
-          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
-          git remote -v  # Print the remote URL to confirm it's correct
-          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
-          git push --all origin  # Push all branches
-          git push --tags origin  # Push all tags
+           cd helloworld1.git
+           git remote remove origin || true
+           git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
+           git branch -r | grep -v 'origin/main' | xargs -I {} git push origin +{}  # Push all branches except main
+           git push --tags origin  # Push all tags
+
+        
+        
