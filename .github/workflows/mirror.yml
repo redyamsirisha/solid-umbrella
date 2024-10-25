@@ -1,5 +1,4 @@
-name: Mirror Bitbucket to GitHub
-
+name: Mirror Bitbucket to GitHub Actions
 on:
   workflow_dispatch: # Allows manual triggering from the Actions
 env:
