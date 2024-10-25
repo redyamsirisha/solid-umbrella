@@ -16,7 +16,7 @@ jobs:
       - name: Clone Bitbucket repository
         run: |
           git remote remove origin || true
-          git clone --mirror https://${{ secrets.BITBUCKET_USER }}:${{ secrets.BITBUCKET_TOKEN }}@bitbucket.org/demorepo123/helloworld1.git
+          git clone --mirror https://${{ secrets.BITBUCKET_USER }}:${{ secrets.BITBUCKETTOKEN }}@bitbucket.org/demorepo123/helloworld1.git
           git remote -v
           env:
               BITBUCKET_USER: ${{ secrets.BITBUCKET_USER }}
