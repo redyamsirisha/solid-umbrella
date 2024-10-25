@@ -18,12 +18,12 @@ jobs:
 
       - name: Clone Bitbucket repository
         run: |
-          git clone --mirror https://$BITBUCKET_USER:$BITBUCKETTOKEN@bitbucket.org/demorepo123/bitbucket-mirroring.git
-          cd bitbucket-mirroring.git
+          git clone --mirror https://$BITBUCKET_USER:$BITBUCKETTOKEN@bitbucket.org/demorepo123/helloworld1g.git
+          cd helloworld1.git
       - name: Push to GitHub
         run: |
-          cd bitbucket-mirroring.git
+          cd helloworld1.git
           git remote remove origin || true
-          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/bitbucket-github-mirroring.git
+          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
           git remote -v  # Print the remote URL to confirm it's correct
           git push --mirror
