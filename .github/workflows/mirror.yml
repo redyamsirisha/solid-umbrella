@@ -1,6 +1,6 @@
 name: Mirror Bitbucket to GitHub Actions
 on:
-  workflow_dispatch: # Allows manual triggering from the Actions
+  workflow_dispatch: # Allows manual triggering from the Actions tab
 env:
     BITBUCKET_USER: ${{ secrets.BITBUCKET_USER }}
     BITBUCKETTOKEN: ${{ secrets.BITBUCKETTOKEN }}
