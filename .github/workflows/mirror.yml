@@ -1,0 +1,29 @@
+name: Mirror Bitbucket to GitHub
+
+on:
+  workflow_dispatch: # Allows manual triggering from the Actions
+env:
+    BITBUCKET_USER: ${{ secrets.BITBUCKET_USER }}
+    BITBUCKETTOKEN: ${{ secrets.BITBUCKETTOKEN }}
+    GITHUB1: ${{ secrets.GITHUB1 }}
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Required to push all branches and tags
+
+      - name: Clone Bitbucket repository
+        run: |
+          git clone --mirror https://$BITBUCKET_USER:$BITBUCKETTOKEN@bitbucket.org/demorepo123/bitbucket-mirroring.git
+          cd bitbucket-mirroring.git
+      - name: Push to GitHub
+        run: |
+          cd bitbucket-mirroring.git
+          git remote remove origin || true
+          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/bitbucket-github-mirroring.git
+          git remote -v  # Print the remote URL to confirm it's correct
+          git push --mirror
