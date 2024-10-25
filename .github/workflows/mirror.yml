@@ -17,7 +17,7 @@ jobs:
 
       - name: Clone Bitbucket repository
         run: |
-          git clone --mirror https://$BITBUCKET_USER:$BITBUCKETTOKEN@bitbucket.org/demorepo123/helloworld1g.git
+          git clone --mirror https://$BITBUCKET_USER:$BITBUCKETTOKEN@bitbucket.org/demorepo123/helloworld1.git
           cd helloworld1.git
       - name: Push to GitHub
         run: |
