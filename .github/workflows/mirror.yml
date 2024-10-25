@@ -28,4 +28,6 @@ jobs:
           git remote remove origin || true
           git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
           git remote -v  # Print the remote URL to confirm it's correct
-          git push --mirror
+          git remote add origin https://x-access-token:${{ secrets.GITHUB1 }}@github.com/redyamsirisha/solid-umbrella.git
+          git push --all origin  # Push all branches
+          git push --tags origin  # Push all tags
